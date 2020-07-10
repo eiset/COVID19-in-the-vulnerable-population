@@ -1,6 +1,6 @@
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 # Author:   Andreas Halgreen Eiset, eiset@ph.au.dk
-# Title:    Missing data analysis for study on assoc. of long-distance migration and mental health outcomes
+# Title:    Fetch and manipulate raw data for project "COVID19 in vulnerable pop in Aarhus"
 # Licence:  GNU GPLv3
 # --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- --- ---
 
