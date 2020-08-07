@@ -6,10 +6,12 @@
 
 source("R/setup.R")
 
+select <- dplyr::select
+
 # create work data from 1 round of inclusion -------------------------
 
 dta200422 <- read_rds(path = tmps$path_to_raw1) %>% #set path to raw data
-  dplyr::select(-c(record_id,
+  select(-c(record_id,
             date_inclusion,
             grep(".factor|data_entry_form", names(.)))) %>%
   mutate_at(c("born_dk", "fever", "cough_throat_pain",
@@ -27,7 +29,7 @@ dta200422 <- read_rds(path = tmps$path_to_raw1) %>% #set path to raw data
   mutate(dob2 = parse_date_time2(dob, "dmy", cutoff_2000 = 40),
          age_int = interval(dob2, ymd("2020-04-12")),
          age = round(time_length(age_int, "year"), 3)) %>%
-  dplyr::select(-c(dob, dob2, age_int))
+  select(-c(dob, dob2, age_int))
 
 # create work data from second round of inclusion --------------------
 
@@ -42,7 +44,7 @@ dta200702 <- read_rds(path = tmps$path_to_raw2) %>%
          age_true = round(time_length(age_int, "year"), 3),
          age_int_faked = interval(dob, ymd("2020-04-12")), #to get comparable age when joining the two datasets
          age_faked = round(time_length(age_int_faked, "year"), 3)) %>%
-  dplyr::select(-c(dob, dob2, age_int, age_int_faked))
+  select(-c(dob, dob2, age_int, age_int_faked))
 
 # create data set with individuals with two or more tests ------------
 
